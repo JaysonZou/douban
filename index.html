@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <!-- <script src="//unpkg.com/jquery@1.9.1/jquery.min.js"></script> -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="never">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="https://img3.doubanio.com/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_456971_9661zf0imhmh1tt9.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>豆瓣电影</title>
+</head>
+
+<body>
+    <main>
+        <section id="top250">
+            <div class="content"></div>
+            <div class="loading">
+                <span class="iconfont icon-loading"></span>
+            </div>
+        </section>
+        <section id="beimei">
+            <div class="loading">
+                <span class="iconfont icon-loading"></span>
+            </div>
+        </section>
+        <section id="search">
+            <div class="search-area">
+                <input type="text" placeholder="搜索电影">
+                <span class="button"> 搜索</span>
+            </div>
+            <div class="search-result">
+                <div class="loading">
+                    <span class="iconfont icon-loading"></span>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="clearfix">
+        <div class="active">
+            <span class="iconfont icon-top"></span>
+            <span>TOP250</span>
+        </div>
+        <div>
+            <span class="iconfont icon-us"></span>
+            <span>北美排行榜</span>
+        </div>
+        <div>
+            <span class="iconfont icon-search"></span>
+            <span>搜索</span>
+        </div>
+    </footer>
+<script src="./js/bundle.js"></script>
+</body>
+<!-- <script>
+    var num = 0
+    xhrReq()
+    $('footer>div').click(function () {
+        var index = $(this).index()
+        $('section').hide().eq(index).fadeIn()
+        $(this).addClass('active').siblings().removeClass('active')
+    })
+
+    function xhrReq() {
+        $.ajax({
+            url: 'http://api.douban.com/v2/movie/top250',
+            method: 'GET',
+            data: {
+                start: num,
+                count: 20
+            },
+            dataType: 'jsonp',
+        }).done(function (ret) {
+            console.log(ret)
+            creatItem(ret)
+            num += 20
+        }).fail(function () {
+            console.log('error...')
+        })
+    }
+
+    $('main').scroll(function () {
+        if ($('#top250').height() == $('main').height() + $('main').scrollTop()) {
+            xhrReq()
+            $('.loading').show()
+        }
+    })
+
+    function creatItem(data) {
+        data.subjects.forEach(function (movie) {
+            var tpl = `<div class="item">
+                <a href="#">
+                    <div class="cover">
+                        <img src="" alt="">
+                    </div>
+                    <div class="detail">
+                        <h2></h2>
+                        <div>评分：<span class="score"></span><span class="collection"></span>收藏</div>
+                        <div><span class="year"></span><span class="type"></span></div>
+                        <div>导演：<span class="director"></span></div>
+                        <div>主演：<span class="cast"></span></div>
+                    </div>
+                </a> 
+            </div>`
+            var $node = $(tpl)
+            $node.find('.cover img').attr('src', movie.images.medium)
+            $node.find('h2').text(movie.title)
+            $node.find('.score').text(movie.rating.average)
+            $node.find('.collection').text(movie.collect_count)
+            $node.find('.year').text(movie.year + ' / ')
+            $node.find('.type').text(movie.genres.join(' / '))
+            $node.find('.director').text(function () {
+                var aDirector = []
+                movie.directors.forEach(function (val) {
+                    aDirector.push(val.name)
+                })
+                return aDirector.join(' / ')
+            })
+            $node.find('.cast').text(function () {
+                var aCast = []
+                movie.casts.forEach(function (val) {
+                    aCast.push(val.name)
+                })
+                return aCast.join(' / ')
+            })
+            $('.content').append($node)
+
+        })
+    }
+</script> -->
+
+</html>
