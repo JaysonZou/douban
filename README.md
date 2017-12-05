@@ -1,6 +1,7 @@
 ## 移动端豆瓣电影
 ### 预览
 #### [PC端预览地址](https://jiangxin0816.github.io/mobile-douban-movie/index.html)
+#### 浏览器F12打开控制台，然后Ctrl+Shift+M进行预览
 #### 微信扫描下方二维码：
 ![微信扫描](./preview.png) 
 ### 源码地址
